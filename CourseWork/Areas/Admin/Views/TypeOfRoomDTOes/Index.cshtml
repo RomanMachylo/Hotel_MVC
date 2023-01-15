@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CourseWork.Models.Data.TypeOfRoomDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Type of Room Table</h2>
+
+<p>
+    @Html.ActionLink("Add New Type of Room", "Create", "", new { @class = "btn btn-success" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOfRooms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOfRooms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Capacity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TypeOfRoomID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TypeOfRoomID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TypeOfRoomID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<CourseWork.Models.Data.ResidenceDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Booking Room Section</h2>
+<p>
+    If you chose to stay with us you will enjoy modern home comforts in a traditional setting.<br />
+    Whether you are looking for a short weekend breakor a longer holiday, we offer a range of packages <br />
+    for the best price. Enjoy your vacancy and we do the rest it has survived not only five centuries, <br />
+    but also the leap into electronic typesetting, remaining essentially unchanged.
+</p>
+
+<h4>Your Reservaions:</h4>
+<h6 style="color: red">@TempData["alertMessage"]</h6>
+@if (!Model.Any())
+{
+    <p>Нou haven't booked yet. </p>
+    <p>
+        @Html.ActionLink("Create New Reservation", "Create", "", new { @class = "btn btn-success" })
+        @Html.ActionLink("Search Available Rooms", "SearchResult", "", new { @class = "btn btn-info" })
+    </p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Rooms.RoomID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Users.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rooms.RoomID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Users.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ResidenceID }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ResidenceID }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <p>
+        @Html.ActionLink("Create New Reservation", "Create", "", new { @class = "btn btn-success" })
+        @Html.ActionLink("Search Available Rooms", "SearchResult", "", new { @class = "btn btn-info" })
+        @*@Html.ActionLink("Check free rooms", "SearchResult", "", new { @class = "btn btn-success" })*@
+    </p>
+}
+

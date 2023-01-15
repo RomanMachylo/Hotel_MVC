@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CourseWork.Models.Data.EmployeeDTO>
+
+@{
+    ViewBag.Title = "Staff";
+}
+
+<h2>Our best staff</h2>
+<table class="table">
+    <tr>
+        <th>
+            Position
+        </th>
+        <th>
+            PIB
+        </th>
+        <th>
+            Birthaday
+        </th>
+        <th>
+            Phone Number
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Positions.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Persons.Surname)
+                @Html.DisplayFor(modelItem => item.Persons.Name)
+                @Html.DisplayFor(modelItem => item.Persons.Patronymic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Persons.Birthday)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+        </tr>
+    }
+
+</table>
+

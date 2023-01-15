@@ -1,0 +1,70 @@
+﻿@model CourseWork.Models.ViewModels.Pages.SearchRoomViewModel
+
+@{
+    ViewBag.Title = "SearchResult";
+}
+
+<h2>Search Available Rooms</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-info" style="margin-top: 5px; width: 18%;"/>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+
+<div class="row">
+    @if (Model != null)
+    {
+        <h4>Available rooms:</h4>
+        foreach (var item in Model.Room)
+        {
+            <table class="table table-bordered">
+                <tr>
+                    <td>
+                        <span>@item.TypeOfRoom.Name |</span>
+                        <span>@item.TypeOfRoom.NumberOfRooms - Rooms| </span>
+                        <span>@item.TypeOfRoom.Capacity - People| </span>
+                        <span>@item.PricePerDay/night</span>
+                    </td>
+                </tr>
+            </table>
+        }
+    }
+    @*@if(TempData["alertMessage"] != null)
+    {
+        <h6 style="color: red">@TempData["alertMessage"]</h6>
+    }*@
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to my reservations", "Index", "", new { @class = "btn btn-secondary", @style = "margin-top: 5px" })
+</div>

@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div style=" position: relative; text-align: center; color: white; ">
+    <img src="https://cdn.britannica.com/96/115096-050-5AFDAF5D/Bellagio-Hotel-Casino-Las-Vegas.jpg" alt="Snow" style="width:100%;">
+    <div style=" position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <h2 style="font-weight: bold;">Lux Hotel & Resort</h2>
+        <p style="font-weight: bold;">
+            If you shose to stay with us you will enjoy modern home <br />
+            comforts in a traditional setting.
+        </p>
+        @Html.ActionLink("Get Started", "Rooms", "", new { @class = "btn btn-light", @style = " width: 50%" })
+    </div>
+</div>
